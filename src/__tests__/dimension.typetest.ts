@@ -1,8 +1,12 @@
-import { MkDimension, One, Mass, Length, Mul, Div } from "../dimension";
+import { Dimension, MkDimension, One, Mass, Length, Mul, Div } from "../dimension";
 import { Z } from "../integer";
 import { Equal, Assert } from "./assert";
 
 /* eslint-disable prettier/prettier */
+
+// Dimension
+
+export type Test_Dimension = Assert<Equal<Dimension<{ M: Z[0], L: Z[1], T: Z[-1] }>, { M: Z[0], L: Z[1], T: Z[-1] }>>;
 
 // MkDimension
 

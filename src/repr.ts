@@ -1,7 +1,7 @@
 import {
   Base,
   bases,
-  Dimension as DimensionT,
+  KDimension as DimensionT,
   One as OneT,
   Mass as MassT,
   Length as LengthT,
