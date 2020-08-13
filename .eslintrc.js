@@ -16,6 +16,8 @@ module.exports = {
         browser: true,
       },
       rules: {
+        "max-len": ["warn", 120],
+        "@typescript-eslint/naming-convention": "off",
         "eslint-comments/no-unused-disable": "error",
       },
     },
