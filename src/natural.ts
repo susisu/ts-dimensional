@@ -5,16 +5,16 @@ export type KNatural = never[];
 export type Natural<N extends KNatural> = N;
 
 export type N = {
-  [0]: [],
-  [1]: [never],
-  [2]: [never, never],
-  [3]: [never, never, never],
-  [4]: [never, never, never, never],
-  [5]: [never, never, never, never, never],
-  [6]: [never, never, never, never, never, never],
-  [7]: [never, never, never, never, never, never, never],
-  [8]: [never, never, never, never, never, never, never, never],
-  [9]: [never, never, never, never, never, never, never, never, never],
+  [0]: Natural<[]>,
+  [1]: Natural<[never]>,
+  [2]: Natural<[never, never]>,
+  [3]: Natural<[never, never, never]>,
+  [4]: Natural<[never, never, never, never]>,
+  [5]: Natural<[never, never, never, never, never]>,
+  [6]: Natural<[never, never, never, never, never, never]>,
+  [7]: Natural<[never, never, never, never, never, never, never]>,
+  [8]: Natural<[never, never, never, never, never, never, never, never]>,
+  [9]: Natural<[never, never, never, never, never, never, never, never, never]>,
 }
 
 export type Add<N1 extends KNatural, N2 extends KNatural> = [...N1, ...N2];

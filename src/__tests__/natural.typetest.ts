@@ -1,7 +1,12 @@
-import { N, Add, Sub } from "../natural";
+import { Natural, N, Add, Sub } from "../natural";
 import { Equal, Assert } from "./assert";
 
 /* eslint-disable prettier/prettier */
+
+// Natural
+
+export type Test_Natural_0 = Assert<Equal<Natural<[]>, []>>;
+export type Test_Natural_1 = Assert<Equal<Natural<[never]>, [never]>>;
 
 // Add
 
