@@ -19,13 +19,13 @@ import {
   div,
   conv,
 } from "../repr";
+import { Z } from "../integer";
 import { MkDimension as MkDimensionT, Mass as MassT } from "../dimension";
 import { MkUnitSystem as MkUnitSystemT, Mks as MksT } from "../unitSystem";
 import { MkQuantity as MkQuantityT } from "../quantity";
-import { OneZ, TwoZ, MinusTwoZ } from "./constant";
 
 describe("repr", () => {
-  type EnergyT = MkDimensionT<{ M: OneZ; L: TwoZ; T: MinusTwoZ }>;
+  type EnergyT = MkDimensionT<{ M: Z[1]; L: Z[2]; T: Z[-2] }>;
   type FpsT = MkUnitSystemT<{ M: "pound"; L: "foot"; T: "second" }>;
 
   const energyRepr = { M: 1, L: 2, T: -2 };
