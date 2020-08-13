@@ -1,25 +1,16 @@
 import { MkInteger, Add, Sub } from "../integer";
+import { N } from "../natural";
 import { Equal, Assert } from "./assert";
-import {
-  ZeroN,
-  OneN,
-  ZeroZ,
-  OneZ,
-  TwoZ,
-  ThreeZ,
-  MinusOneZ,
-  MinusTwoZ,
-  MinusThreeZ,
-} from "./constant";
+import { ZeroZ, OneZ, TwoZ, ThreeZ, MinusOneZ, MinusTwoZ, MinusThreeZ } from "./constant";
 
 /* eslint-disable prettier/prettier */
 
 // MkInteger
 
-export type Test_MkInteger_0 = Assert<Equal<MkInteger<"+", ZeroN>, { sign: "+", abs: ZeroN }>>;
-export type Test_MkInteger_1 = Assert<Equal<MkInteger<"-", ZeroN>, { sign: "+", abs: ZeroN }>>;
-export type Test_MkInteger_2 = Assert<Equal<MkInteger<"+", OneN>, { sign: "+", abs: OneN }>>;
-export type Test_MkInteger_3 = Assert<Equal<MkInteger<"-", OneN>, { sign: "-", abs: OneN }>>;
+export type Test_MkInteger_0 = Assert<Equal<MkInteger<"+", N[0]>, { sign: "+", abs: N[0] }>>;
+export type Test_MkInteger_1 = Assert<Equal<MkInteger<"-", N[0]>, { sign: "+", abs: N[0] }>>;
+export type Test_MkInteger_2 = Assert<Equal<MkInteger<"+", N[1]>, { sign: "+", abs: N[1] }>>;
+export type Test_MkInteger_3 = Assert<Equal<MkInteger<"-", N[1]>, { sign: "-", abs: N[1] }>>;
 
 // Add
 

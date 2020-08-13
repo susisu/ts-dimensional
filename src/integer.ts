@@ -1,27 +1,27 @@
-import { Natural, Zero as ZeroN, One as OneN, Add as AddN, Sub as SubN } from "./natural";
+import { KNatural, N, Add as AddN, Sub as SubN } from "./natural";
 
 /* eslint-disable prettier/prettier */
 
 export type Integer = {
   sign: Sign,
-  abs: Natural,
+  abs: KNatural,
 };
 export type Sign = "+" | "-";
 
 type Canonical<Z extends Integer> =
-  Z["abs"] extends ZeroN
-    ? { sign: "+", abs: ZeroN }
+  Z["abs"] extends N[0]
+    ? { sign: "+", abs: N[0] }
     : Z;
 
-export type MkInteger<S extends Sign, N extends Natural> = Canonical<{
+export type MkInteger<S extends Sign, N extends KNatural> = Canonical<{
   sign: S,
   abs: N,
 }>;
 
-export type Zero = MkInteger<"+", ZeroN>;
-export type One = MkInteger<"+", OneN>;
+export type Zero = MkInteger<"+", N[0]>;
+export type One = MkInteger<"+", N[1]>;
 
-type SubNZ<N1 extends Natural, N2 extends Natural> =
+type SubNZ<N1 extends KNatural, N2 extends KNatural> =
   SubN<N1,  N2> extends never
     ? MkInteger<"-", SubN<N2, N1>>
     : MkInteger<"+", SubN<N1, N2>>;
