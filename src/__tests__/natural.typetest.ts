@@ -2,6 +2,8 @@ import { Add, Sub } from "../natural";
 import { Equal, Assert } from "./assert";
 import { ZeroN, OneN, TwoN, ThreeN } from "./constant";
 
+/* eslint-disable prettier/prettier */
+
 // Add
 
 export type Test_Add_0 = Assert<Equal<Add<ZeroN, ZeroN>, ZeroN>>;

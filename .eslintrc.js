@@ -5,7 +5,12 @@ module.exports = {
   overrides: [
     {
       files: ["*.{ts,tsx}"],
-      extends: ["@susisu/eslint-config/preset/ts-types", "plugin:eslint-comments/recommended"],
+      extends: [
+        "@susisu/eslint-config/preset/ts-types",
+        "prettier",
+        "prettier/@typescript-eslint",
+        "plugin:eslint-comments/recommended",
+      ],
       parserOptions: {
         ecmaVersion: 2019,
         sourceType: "module",
@@ -16,9 +21,9 @@ module.exports = {
         browser: true,
       },
       rules: {
-        "max-len": ["warn", 120],
+        "prettier/prettier": "error",
         "@typescript-eslint/naming-convention": "off",
-        "eslint-comments/no-unused-disable": "error",
+        "eslint-comments/disable-enable-pair": "off",
       },
     },
     {

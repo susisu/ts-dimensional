@@ -1,6 +1,8 @@
 import { Zero as ZeroN, One as OneN } from "../natural";
 import { MkInteger, Zero as ZeroZ, One as OneZ } from "../integer";
 
+/* eslint-disable prettier/prettier */
+
 export { ZeroN, OneN };
 export type TwoN = [unknown, unknown];
 export type ThreeN = [unknown, unknown, unknown];

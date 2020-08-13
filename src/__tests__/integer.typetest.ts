@@ -1,9 +1,18 @@
 import { MkInteger, Add, Sub } from "../integer";
 import { Equal, Assert } from "./assert";
 import {
-  ZeroN, OneN,
-  ZeroZ, OneZ, TwoZ, ThreeZ, MinusOneZ, MinusTwoZ, MinusThreeZ,
+  ZeroN,
+  OneN,
+  ZeroZ,
+  OneZ,
+  TwoZ,
+  ThreeZ,
+  MinusOneZ,
+  MinusTwoZ,
+  MinusThreeZ,
 } from "./constant";
+
+/* eslint-disable prettier/prettier */
 
 // MkInteger
 

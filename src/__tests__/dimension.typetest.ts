@@ -2,6 +2,8 @@ import { MkDimension, One, Mass, Length, Mul, Div } from "../dimension";
 import { Equal, Assert } from "./assert";
 import { ZeroZ, OneZ, TwoZ, MinusOneZ } from "./constant";
 
+/* eslint-disable prettier/prettier */
+
 // MkDimension
 
 export type Test_MkDimension_0 = Assert<Equal<MkDimension<{}>, { M: ZeroZ, L: ZeroZ, T: ZeroZ }>>;

@@ -1,6 +1,8 @@
 import { Dimension } from "./dimension";
 import { UnitSystem } from "./unitSystem";
 
+/* eslint-disable prettier/prettier */
+
 export type Quantity = {
   dimension: Dimension,
   unitSystem: UnitSystem,

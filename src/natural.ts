@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+
 export type Natural = unknown[];
 
 export type Zero = [];

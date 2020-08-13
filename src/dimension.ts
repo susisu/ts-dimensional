@@ -1,10 +1,6 @@
-import {
-  Integer,
-  Zero as ZeroZ,
-  One as OneZ,
-  Add as AddZ,
-  Sub as SubZ,
-} from "./integer";
+import { Integer, Zero as ZeroZ, One as OneZ, Add as AddZ, Sub as SubZ } from "./integer";
+
+/* eslint-disable prettier/prettier */
 
 export const bases = ["M", "L", "T"] as const;
 export type Base = typeof bases[number];

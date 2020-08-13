@@ -1,10 +1,6 @@
-import {
-  Natural,
-  Zero as ZeroN,
-  One as OneN,
-  Add as AddN,
-  Sub as SubN,
-} from "./natural";
+import { Natural, Zero as ZeroN, One as OneN, Add as AddN, Sub as SubN } from "./natural";
+
+/* eslint-disable prettier/prettier */
 
 export type Integer = {
   sign: Sign,

@@ -1,5 +1,7 @@
 import { Base } from "./dimension";
 
+/* eslint-disable prettier/prettier */
+
 export type Unit = string;
 export type UnitSystem = { [B in Base]: Unit };
 
