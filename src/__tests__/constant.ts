@@ -4,8 +4,8 @@ import { MkInteger, Zero as ZeroZ, One as OneZ } from "../integer";
 /* eslint-disable prettier/prettier */
 
 export { ZeroN, OneN };
-export type TwoN = [unknown, unknown];
-export type ThreeN = [unknown, unknown, unknown];
+export type TwoN = [never, never];
+export type ThreeN = [never, never, never];
 
 export { ZeroZ, OneZ };
 export type TwoZ = MkInteger<"+", TwoN>;
