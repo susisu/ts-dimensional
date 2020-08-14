@@ -5,4 +5,4 @@ import { Equal, Assert } from "./assert";
 
 // UnitSystem
 
-export type Test_UnitSystem = Assert<Equal<MkUnitSystem<"MKS">, { name: "MKS" }>>;
+export type Test_UnitSystem = Assert<Equal<MkUnitSystem<"MKS">, "MKS">>;
