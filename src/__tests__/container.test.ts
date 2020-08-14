@@ -16,13 +16,13 @@ import {
   mul,
   div,
   conv,
-} from "../repr";
+} from "../container";
 import { Z } from "../integer";
 import { MkDimension as MkDimensionT, Mass as MassT } from "../dimension";
 import { UnitSystem as UnitSystemT } from "../unitSystem";
 import { MkQuantity as MkQuantityT } from "../quantity";
 
-describe("repr", () => {
+describe("container", () => {
   type EnergyT = MkDimensionT<{ M: Z[1]; L: Z[2]; T: Z[-2] }>;
   type MksT = UnitSystemT<"MKS">;
   type CgsT = UnitSystemT<"CGS">;

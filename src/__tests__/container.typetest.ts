@@ -1,5 +1,5 @@
 import { UnitSystem as UnitSystemT } from "../unitSystem";
-import { unitSystem, mass, length, add, sub, mul, div } from "../repr";
+import { unitSystem, mass, length, add, sub, mul, div } from "../container";
 
 type MksT = UnitSystemT<"MKS">;
 type CgsT = UnitSystemT<"CGS">;
