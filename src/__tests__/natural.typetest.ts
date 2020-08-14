@@ -1,19 +1,19 @@
-import { Nat, Succ, Pred, Add, Sub } from "../natural";
+import { Nat, Incr, Decr, Add, Sub } from "../natural";
 import { Equal, Assert } from "./assert";
 
 /* eslint-disable prettier/prettier */
 
-// Succ
+// Incr
 
-export type Test_Succ_0 = Assert<Equal<Succ<Nat[0]>, Nat[1]>>;
-export type Test_Succ_1 = Assert<Equal<Succ<Nat[1]>, Nat[2]>>;
-export type Test_Succ_2 = Assert<Equal<Succ<Nat[2]>, Nat[3]>>;
+export type Test_Incr_0 = Assert<Equal<Incr<Nat[0]>, Nat[1]>>;
+export type Test_Incr_1 = Assert<Equal<Incr<Nat[1]>, Nat[2]>>;
+export type Test_Incr_2 = Assert<Equal<Incr<Nat[2]>, Nat[3]>>;
 
-// Pred
+// Decr
 
-export type Test_Pred_0 = Assert<Equal<Pred<Nat[0]>, never>>;
-export type Test_Pred_1 = Assert<Equal<Pred<Nat[1]>, Nat[0]>>;
-export type Test_Pred_2 = Assert<Equal<Pred<Nat[2]>, Nat[1]>>;
+export type Test_Decr_0 = Assert<Equal<Decr<Nat[0]>, never>>;
+export type Test_Decr_1 = Assert<Equal<Decr<Nat[1]>, Nat[0]>>;
+export type Test_Decr_2 = Assert<Equal<Decr<Nat[2]>, Nat[1]>>;
 
 // Add
 

@@ -1,8 +1,8 @@
 import {
   NaturalKind,
   Nat,
-  Succ as SuccN,
-  Pred as PredN,
+  Incr as IncrN,
+  Decr as DecrN,
   Add as AddN,
   Sub as SubN,
 } from "./natural";
@@ -49,15 +49,15 @@ export type Int = {
   [9]: MkInteger<"+", Nat[9]>,
 }
 
-export type Succ<Z extends IntegerKind> =
+export type Incr<Z extends IntegerKind> =
     Z["abs"] extends Nat[0] ? MkInteger<"+", Nat[1]>
-  : Z["sign"] extends "+" ? MkInteger<"+", SuccN<Z["abs"]>>
-  : MkInteger<"-", PredN<Z["abs"]>>
+  : Z["sign"] extends "+" ? MkInteger<"+", IncrN<Z["abs"]>>
+  : MkInteger<"-", DecrN<Z["abs"]>>
 
-export type Pred<Z extends IntegerKind> =
+export type Decr<Z extends IntegerKind> =
     Z["abs"] extends Nat[0] ? MkInteger<"-", Nat[1]>
-  : Z["sign"] extends "+" ? MkInteger<"+", PredN<Z["abs"]>>
-  : MkInteger<"-", SuccN<Z["abs"]>>
+  : Z["sign"] extends "+" ? MkInteger<"+", DecrN<Z["abs"]>>
+  : MkInteger<"-", IncrN<Z["abs"]>>
 
 type SubNZ<N1 extends NaturalKind, N2 extends NaturalKind> =
   SubN<N1,  N2> extends never

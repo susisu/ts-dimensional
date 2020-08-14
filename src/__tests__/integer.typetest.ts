@@ -1,4 +1,4 @@
-import { MkInteger, Int, Succ, Pred, Add, Sub } from "../integer";
+import { MkInteger, Int, Incr, Decr, Add, Sub } from "../integer";
 import { Nat } from "../natural";
 import { Equal, Assert } from "./assert";
 
@@ -11,21 +11,21 @@ export type Test_MkInteger_1 = Assert<Equal<MkInteger<"-", Nat[0]>, { sign: "+",
 export type Test_MkInteger_2 = Assert<Equal<MkInteger<"+", Nat[1]>, { sign: "+", abs: Nat[1] }>>;
 export type Test_MkInteger_3 = Assert<Equal<MkInteger<"-", Nat[1]>, { sign: "-", abs: Nat[1] }>>;
 
-// Succ
+// Incr
 
-export type Test_Succ_0 = Assert<Equal<Succ<Int[0]>, Int[1]>>;
-export type Test_Succ_1 = Assert<Equal<Succ<Int[1]>, Int[2]>>;
-export type Test_Succ_2 = Assert<Equal<Succ<Int[2]>, Int[3]>>;
-export type Test_Succ_3 = Assert<Equal<Succ<Int[-1]>, Int[0]>>;
-export type Test_Succ_4 = Assert<Equal<Succ<Int[-2]>, Int[-1]>>;
+export type Test_Incr_0 = Assert<Equal<Incr<Int[0]>, Int[1]>>;
+export type Test_Incr_1 = Assert<Equal<Incr<Int[1]>, Int[2]>>;
+export type Test_Incr_2 = Assert<Equal<Incr<Int[2]>, Int[3]>>;
+export type Test_Incr_3 = Assert<Equal<Incr<Int[-1]>, Int[0]>>;
+export type Test_Incr_4 = Assert<Equal<Incr<Int[-2]>, Int[-1]>>;
 
-// Pred
+// Decr
 
-export type Test_Pred_0 = Assert<Equal<Pred<Int[0]>, Int[-1]>>;
-export type Test_Pred_1 = Assert<Equal<Pred<Int[1]>, Int[0]>>;
-export type Test_Pred_2 = Assert<Equal<Pred<Int[2]>, Int[1]>>;
-export type Test_Pred_3 = Assert<Equal<Pred<Int[-1]>, Int[-2]>>;
-export type Test_Pred_4 = Assert<Equal<Pred<Int[-2]>, Int[-3]>>;
+export type Test_Decr_0 = Assert<Equal<Decr<Int[0]>, Int[-1]>>;
+export type Test_Decr_1 = Assert<Equal<Decr<Int[1]>, Int[0]>>;
+export type Test_Decr_2 = Assert<Equal<Decr<Int[2]>, Int[1]>>;
+export type Test_Decr_3 = Assert<Equal<Decr<Int[-1]>, Int[-2]>>;
+export type Test_Decr_4 = Assert<Equal<Decr<Int[-2]>, Int[-3]>>;
 
 // Add
 

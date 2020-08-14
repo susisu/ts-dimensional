@@ -1,8 +1,8 @@
 export {
   NaturalKind,
   Nat,
-  Succ as SuccN,
-  Pred as PredN,
+  Incr as IncrN,
+  Decr as DecrN,
   Add as AddN,
   Sub as SubN,
 } from "./natural";
@@ -11,8 +11,8 @@ export {
   Sign,
   MkInteger,
   Int,
-  Succ as SuccZ,
-  Pred as PredZ,
+  Incr as IncrZ,
+  Decr as DecrZ,
   Add as AddZ,
   Sub as SubZ,
 } from "./integer";
