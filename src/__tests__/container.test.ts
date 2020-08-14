@@ -7,15 +7,15 @@ import {
   massD,
   lengthD,
   timeD,
-  num,
-  mass,
-  length,
-  time,
   mulD,
   divD,
   MKS,
   mks,
   cgs,
+  num,
+  mass,
+  length,
+  time,
   add,
   sub,
   mul,
@@ -74,6 +74,28 @@ describe("container", () => {
     });
   });
 
+  describe("mulD", () => {
+    it("should multiply dimensions", () => {
+      type D1 = MkDimension<{ M: Int[1]; L: Int[1]; T: Int[0] }>;
+      type D2 = MkDimension<{ M: Int[0]; L: Int[1]; T: Int[-2] }>;
+      const d1 = dimension<D1>({ M: 1, L: 1, T: 0 });
+      const d2 = dimension<D2>({ M: 0, L: 1, T: -2 });
+      const d3 = mulD(d1, d2);
+      expect(d3.repr).toEqual<DimensionRepr>({ M: 1, L: 2, T: -2 });
+    });
+  });
+
+  describe("divD", () => {
+    it("should divide a dimension by another", () => {
+      type D1 = MkDimension<{ M: Int[1]; L: Int[1]; T: Int[0] }>;
+      type D2 = MkDimension<{ M: Int[0]; L: Int[1]; T: Int[-2] }>;
+      const d1 = dimension<D1>({ M: 1, L: 1, T: 0 });
+      const d2 = dimension<D2>({ M: 0, L: 1, T: -2 });
+      const d3 = divD(d1, d2);
+      expect(d3.repr).toEqual<DimensionRepr>({ M: 1, L: 0, T: 2 });
+    });
+  });
+
   describe("num", () => {
     it("should create a dimensionless number", () => {
       const x = num(42, mks);
@@ -115,28 +137,6 @@ describe("container", () => {
         dimension: timeD.repr,
         unitSystem: mks.repr,
       });
-    });
-  });
-
-  describe("mulD", () => {
-    it("should multiply dimensions", () => {
-      type D1 = MkDimension<{ M: Int[1]; L: Int[1]; T: Int[0] }>;
-      type D2 = MkDimension<{ M: Int[0]; L: Int[1]; T: Int[-2] }>;
-      const d1 = dimension<D1>({ M: 1, L: 1, T: 0 });
-      const d2 = dimension<D2>({ M: 0, L: 1, T: -2 });
-      const d3 = mulD(d1, d2);
-      expect(d3.repr).toEqual<DimensionRepr>({ M: 1, L: 2, T: -2 });
-    });
-  });
-
-  describe("divD", () => {
-    it("should divide a dimension by another", () => {
-      type D1 = MkDimension<{ M: Int[1]; L: Int[1]; T: Int[0] }>;
-      type D2 = MkDimension<{ M: Int[0]; L: Int[1]; T: Int[-2] }>;
-      const d1 = dimension<D1>({ M: 1, L: 1, T: 0 });
-      const d2 = dimension<D2>({ M: 0, L: 1, T: -2 });
-      const d3 = divD(d1, d2);
-      expect(d3.repr).toEqual<DimensionRepr>({ M: 1, L: 0, T: 2 });
     });
   });
 
