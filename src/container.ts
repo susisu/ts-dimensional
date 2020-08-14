@@ -24,33 +24,35 @@ import {
 
 // containers
 
+type Type<T> = (x: T) => T;
+
 export type Dimension<D extends DimensionKind> = Readonly<{
-  $type: (x: D) => D;
+  __type__: Type<D>;
   repr: DimensionRepr;
 }>;
 
 export type UnitSystem<S extends UnitSystemKind> = Readonly<{
-  $type: (x: S) => S;
+  __type__: Type<S>;
   repr: UnitSystemRepr;
 }>;
 
 export type Quantity<Q extends QuantityKind> = Readonly<{
-  $type: (x: Q) => Q;
+  __type__: Type<Q>;
   repr: QuantityRepr;
 }>;
 
 const id = <T>(x: T): T => x;
 
 export function dimension<D extends DimensionKind>(repr: DimensionRepr): Dimension<D> {
-  return { repr, $type: id };
+  return { __type__: id, repr };
 }
 
 export function unitSystem<S extends UnitSystemKind>(repr: UnitSystemRepr): UnitSystem<S> {
-  return { repr, $type: id };
+  return { __type__: id, repr };
 }
 
 export function quantity<Q extends QuantityKind>(repr: QuantityRepr): Quantity<Q> {
-  return { repr, $type: id };
+  return { __type__: id, repr };
 }
 
 export type Qty<D extends DimensionKind, S extends UnitSystemKind> = Quantity<MkQuantity<D, S>>;
