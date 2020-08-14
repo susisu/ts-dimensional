@@ -2,23 +2,25 @@ import { NaturalKind, Nat, Add as AddN, Sub as SubN } from "./natural";
 
 /* eslint-disable prettier/prettier */
 
-export type KInteger = {
+export type IntegerKind = {
   sign: Sign,
   abs: NaturalKind,
 };
 export type Sign = "+" | "-";
 
-export type Integer<Z extends KInteger> =
+type AsInteger<Z extends IntegerKind> = Z;
+
+type Canonical<Z extends IntegerKind> =
   Z["abs"] extends Nat[0]
-    ? { sign: "+", abs: Nat[0] }
+    ? AsInteger<{ sign: "+", abs: Z["abs"] }>
     : Z;
 
-export type MkInteger<S extends Sign, N extends NaturalKind> = Integer<{
+export type MkInteger<S extends Sign, N extends NaturalKind> = Canonical<AsInteger<{
   sign: S,
   abs: N,
-}>;
+}>>;
 
-export type Z = {
+export type Int = {
   [-9]: MkInteger<"-", Nat[9]>,
   [-8]: MkInteger<"-", Nat[8]>,
   [-7]: MkInteger<"-", Nat[7]>,
@@ -45,7 +47,7 @@ type SubNZ<N1 extends NaturalKind, N2 extends NaturalKind> =
     ? MkInteger<"-", SubN<N2, N1>>
     : MkInteger<"+", SubN<N1, N2>>;
 
-export type Add<Z1 extends KInteger, Z2 extends KInteger> =
+export type Add<Z1 extends IntegerKind, Z2 extends IntegerKind> =
   Z1["sign"] extends "+"
     ? (
       Z2["sign"] extends "+"
@@ -57,7 +59,7 @@ export type Add<Z1 extends KInteger, Z2 extends KInteger> =
         ? SubNZ<Z2["abs"], Z1["abs"]>
         : MkInteger<"-", AddN<Z1["abs"], Z2["abs"]>>
     );
-export type Sub<Z1 extends KInteger, Z2 extends KInteger> =
+export type Sub<Z1 extends IntegerKind, Z2 extends IntegerKind> =
   Z1["sign"] extends "+"
     ? (
       Z2["sign"] extends "+"
