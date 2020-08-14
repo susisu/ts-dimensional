@@ -3,14 +3,14 @@ import { UnitSystemKind } from "./unitSystem";
 
 /* eslint-disable prettier/prettier */
 
-export type KQuantity = {
+export type QuantityKind = {
   dimension: DimensionKind,
   unitSystem: UnitSystemKind,
 };
 
-export type Quantity<Q extends KQuantity> = Q;
+type AsQuantity<Q extends QuantityKind> = Q;
 
-export type MkQuantity<D extends DimensionKind, S extends UnitSystemKind> = Quantity<{
+export type MkQuantity<D extends DimensionKind, S extends UnitSystemKind> = AsQuantity<{
   dimension: D,
   unitSystem: S,
 }>;

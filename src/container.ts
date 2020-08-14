@@ -8,7 +8,7 @@ import {
   Div as DivD,
 } from "./dimension";
 import { UnitSystemKind, MkUnitSystem } from "./unitSystem";
-import { KQuantity, MkQuantity } from "./quantity";
+import { QuantityKind, MkQuantity } from "./quantity";
 import {
   DimensionRepr,
   UnitSystemRepr,
@@ -30,7 +30,7 @@ export type UnitSystem<S extends UnitSystemKind> = Readonly<{
   $type: (x: S) => S;
 }>;
 
-export type Quantity<Q extends KQuantity> = Readonly<{
+export type Quantity<Q extends QuantityKind> = Readonly<{
   repr: QuantityRepr;
   $type: (x: Q) => Q;
 }>;
@@ -45,7 +45,7 @@ export function unitSystem<S extends UnitSystemKind>(repr: UnitSystemRepr): Unit
   return { repr, $type: id };
 }
 
-export function quantity<Q extends KQuantity>(repr: QuantityRepr): Quantity<Q> {
+export function quantity<Q extends QuantityKind>(repr: QuantityRepr): Quantity<Q> {
   return { repr, $type: id };
 }
 
