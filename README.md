@@ -1,5 +1,5 @@
-# @susisu/ts-dimensional-poc
-[![Build Status](https://travis-ci.com/susisu/ts-dimensional-poc.svg?branch=master)](https://travis-ci.com/susisu/ts-dimensional-poc)
+# @susisu/ts-dimensional
+[![Build Status](https://travis-ci.com/susisu/ts-dimensional.svg?branch=master)](https://travis-ci.com/susisu/ts-dimensional)
 
 PoC: Dimensional Quantities in TypeScript
 

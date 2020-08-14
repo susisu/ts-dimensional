@@ -1,8 +1,8 @@
 {
-  "name": "@susisu/ts-dimensional-poc",
+  "name": "@susisu/ts-dimensional",
   "version": "0.0.0",
   "description": "Dimensional quantities in TypeScript",
-  "repository": "https://github.com/susisu/ts-dimensional-poc.git",
+  "repository": "https://github.com/susisu/ts-dimensional.git",
   "author": "Susisu <susisu2413@yahoo.co.jp>",
   "license": "MIT",
   "main": "lib/index.js",
