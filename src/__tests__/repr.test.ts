@@ -6,8 +6,6 @@ import {
   massD,
   lengthD,
   timeD,
-  mks,
-  cgs,
   qty,
   num,
   mass,
@@ -21,19 +19,28 @@ import {
 } from "../repr";
 import { Z } from "../integer";
 import { MkDimension as MkDimensionT, Mass as MassT } from "../dimension";
-import { MkUnitSystem as MkUnitSystemT, Mks as MksT } from "../unitSystem";
+import { UnitSystem as UnitSystemT } from "../unitSystem";
 import { MkQuantity as MkQuantityT } from "../quantity";
 
 describe("repr", () => {
   type EnergyT = MkDimensionT<{ M: Z[1]; L: Z[2]; T: Z[-2] }>;
-  type FpsT = MkUnitSystemT<{ M: "pound"; L: "foot"; T: "second" }>;
+  type MksT = UnitSystemT<"MKS">;
+  type CgsT = UnitSystemT<"CGS">;
 
   const energyRepr = { M: 1, L: 2, T: -2 };
-  const fpsRepr = {
-    M: { name: "pound", coeff: 0.45359237 },
-    L: { name: "foot", coeff: 0.3048 },
+  const mksRepr = {
+    M: { name: "kilogram", coeff: 1 },
+    L: { name: "meter", coeff: 1 },
     T: { name: "second", coeff: 1 },
   };
+  const cgsRepr = {
+    M: { name: "gram", coeff: 1e-3 },
+    L: { name: "centimeter", coeff: 1e-2 },
+    T: { name: "second", coeff: 1 },
+  };
+
+  const mks = unitSystem<MksT>(mksRepr);
+  const cgs = unitSystem<CgsT>(cgsRepr);
 
   describe("dimension", () => {
     it("should create a value representing a dimension", () => {
@@ -44,6 +51,12 @@ describe("repr", () => {
 
   describe("unitSystem", () => {
     it("should create a value representing a unit system", () => {
+      type FpsT = UnitSystemT<"FPS">;
+      const fpsRepr = {
+        M: { name: "pound", coeff: 0.45359237 },
+        L: { name: "foot", coeff: 0.3048 },
+        T: { name: "second", coeff: 1 },
+      };
       const fps = unitSystem<FpsT>(fpsRepr);
       expect(fps.repr).toEqual(fpsRepr);
     });

@@ -1,9 +1,11 @@
 import { MkQuantity } from "../quantity";
 import { Mass } from "../dimension";
-import { Mks } from "../unitSystem";
+import { UnitSystem } from "../unitSystem";
 import { Equal, Assert } from "./assert";
 
 /* eslint-disable prettier/prettier */
+
+type Mks = UnitSystem<"MKS">;
 
 // MkUnitSystem
 

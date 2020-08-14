@@ -1,8 +1,8 @@
-import { MkUnitSystem } from "../unitSystem";
+import { UnitSystem } from "../unitSystem";
 import { Equal, Assert } from "./assert";
 
 /* eslint-disable prettier/prettier */
 
-// MkUnitSystem
+// UnitSystem
 
-export type Test_MkUnitSystem = Assert<Equal<MkUnitSystem<{ M: "m", L: "l", T: "t" }>, { M: "m", L: "l", T: "t" }>>;
+export type Test_UnitSystem = Assert<Equal<UnitSystem<"MKS">, "MKS">>;

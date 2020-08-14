@@ -9,7 +9,7 @@ import {
   Mul as MulDT,
   Div as DivDT,
 } from "./dimension";
-import { UnitSystem as UnitSystemT, Mks as MksT, Cgs as CgsT } from "./unitSystem";
+import { KUnitSystem as UnitSystemT } from "./unitSystem";
 import { Quantity as QuantityT, MkQuantity as MkQuantityT } from "./quantity";
 
 export type DimensionRepr = Readonly<{ [B in Base]: number }>;
@@ -117,35 +117,6 @@ export const oneD = dimension<OneT>({ M: 0, L: 0, T: 0 });
 export const massD = dimension<MassT>({ M: 1, L: 0, T: 0 });
 export const lengthD = dimension<LengthT>({ M: 0, L: 1, T: 0 });
 export const timeD = dimension<TimeT>({ M: 0, L: 0, T: 1 });
-
-export const mks = unitSystem<MksT>({
-  M: {
-    name: "kilogram",
-    coeff: 1,
-  },
-  L: {
-    name: "meter",
-    coeff: 1,
-  },
-  T: {
-    name: "second",
-    coeff: 1,
-  },
-});
-export const cgs = unitSystem<CgsT>({
-  M: {
-    name: "gram",
-    coeff: 1e-3,
-  },
-  L: {
-    name: "centimeter",
-    coeff: 1e-2,
-  },
-  T: {
-    name: "second",
-    coeff: 1,
-  },
-});
 
 export type Qty<D extends DimensionT, S extends UnitSystemT> = Quantity<MkQuantityT<D, S>>;
 

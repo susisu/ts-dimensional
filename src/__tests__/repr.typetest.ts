@@ -1,4 +1,22 @@
-import { mks, cgs, mass, length, add, sub, mul, div } from "../repr";
+import { UnitSystem as UnitSystemT } from "../unitSystem";
+import { unitSystem, mass, length, add, sub, mul, div } from "../repr";
+
+type MksT = UnitSystemT<"MKS">;
+type CgsT = UnitSystemT<"CGS">;
+
+const mksRepr = {
+  M: { name: "kilogram", coeff: 1 },
+  L: { name: "meter", coeff: 1 },
+  T: { name: "second", coeff: 1 },
+};
+const cgsRepr = {
+  M: { name: "gram", coeff: 1 },
+  L: { name: "centimeter", coeff: 1 },
+  T: { name: "second", coeff: 1 },
+};
+
+const mks = unitSystem<MksT>(mksRepr);
+const cgs = unitSystem<CgsT>(cgsRepr);
 
 const m1 = mass(42, mks);
 const m2 = mass(42, cgs);
