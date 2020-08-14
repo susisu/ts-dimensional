@@ -10,7 +10,7 @@ import {
   Div as DivDT,
 } from "./dimension";
 import { KUnitSystem as UnitSystemT } from "./unitSystem";
-import { Quantity as QuantityT, MkQuantity as MkQuantityT } from "./quantity";
+import { KQuantity as QuantityT, MkQuantity as MkQuantityT } from "./quantity";
 
 export type DimensionRepr = Readonly<{ [B in Base]: number }>;
 export type UnitRepr = Readonly<{
