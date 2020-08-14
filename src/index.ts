@@ -8,6 +8,7 @@ export {
 } from "./natural";
 export {
   IntegerKind,
+  Sign,
   MkInteger,
   Int,
   Succ as SuccZ,
