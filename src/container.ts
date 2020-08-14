@@ -1,5 +1,5 @@
 import {
-  KDimension,
+  DimensionKind,
   One as OneD,
   Mass as MassD,
   Length as LengthD,
@@ -20,7 +20,7 @@ import {
   conv as convRepr,
 } from "./repr";
 
-export type Dimension<D extends KDimension> = Readonly<{
+export type Dimension<D extends DimensionKind> = Readonly<{
   repr: DimensionRepr;
   $type: (x: D) => D;
 }>;
@@ -37,7 +37,7 @@ export type Quantity<Q extends KQuantity> = Readonly<{
 
 const id = <T>(x: T): T => x;
 
-export function dimension<D extends KDimension>(repr: DimensionRepr): Dimension<D> {
+export function dimension<D extends DimensionKind>(repr: DimensionRepr): Dimension<D> {
   return { repr, $type: id };
 }
 
@@ -54,9 +54,9 @@ export const massD = dimension<MassD>({ M: 1, L: 0, T: 0 });
 export const lengthD = dimension<LengthD>({ M: 0, L: 1, T: 0 });
 export const timeD = dimension<TimeD>({ M: 0, L: 0, T: 1 });
 
-export type Qty<D extends KDimension, S extends KUnitSystem> = Quantity<MkQuantity<D, S>>;
+export type Qty<D extends DimensionKind, S extends KUnitSystem> = Quantity<MkQuantity<D, S>>;
 
-export function qty<D extends KDimension, S extends KUnitSystem>(
+export function qty<D extends DimensionKind, S extends KUnitSystem>(
   value: number,
   dimension: Dimension<D>,
   unitSystem: UnitSystem<S>
@@ -93,35 +93,35 @@ export function time<S extends KUnitSystem>(
   return qty(value, timeD, unitSystem);
 }
 
-export function add<D extends KDimension, S extends KUnitSystem>(
+export function add<D extends DimensionKind, S extends KUnitSystem>(
   q1: Qty<D, S>,
   q2: Qty<D, S>
 ): Qty<D, S> {
   return quantity(addRepr(q1.repr, q2.repr));
 }
 
-export function sub<D extends KDimension, S extends KUnitSystem>(
+export function sub<D extends DimensionKind, S extends KUnitSystem>(
   q1: Qty<D, S>,
   q2: Qty<D, S>
 ): Qty<D, S> {
   return quantity(subRepr(q1.repr, q2.repr));
 }
 
-export function mul<D1 extends KDimension, D2 extends KDimension, S extends KUnitSystem>(
+export function mul<D1 extends DimensionKind, D2 extends DimensionKind, S extends KUnitSystem>(
   q1: Qty<D1, S>,
   q2: Qty<D2, S>
 ): Qty<MulD<D1, D2>, S> {
   return quantity(mulRepr(q1.repr, q2.repr));
 }
 
-export function div<D1 extends KDimension, D2 extends KDimension, S extends KUnitSystem>(
+export function div<D1 extends DimensionKind, D2 extends DimensionKind, S extends KUnitSystem>(
   q1: Qty<D1, S>,
   q2: Qty<D2, S>
 ): Qty<DivD<D1, D2>, S> {
   return quantity(divRepr(q1.repr, q2.repr));
 }
 
-export function conv<D extends KDimension, S1 extends KUnitSystem, S2 extends KUnitSystem>(
+export function conv<D extends DimensionKind, S1 extends KUnitSystem, S2 extends KUnitSystem>(
   q: Qty<D, S1>,
   toUnitSystem: UnitSystem<S2>
 ): Qty<D, S2> {
