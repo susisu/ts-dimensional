@@ -7,13 +7,15 @@ import {
   massD,
   lengthD,
   timeD,
-  MKS,
-  mks,
-  cgs,
   num,
   mass,
   length,
   time,
+  mulD,
+  divD,
+  MKS,
+  mks,
+  cgs,
   add,
   sub,
   mul,
@@ -24,46 +26,47 @@ import { Int } from "../integer";
 import { MkDimension, Mass } from "../dimension";
 import { MkUnitSystem } from "../unitSystem";
 import { MkQuantity } from "../quantity";
+import { DimensionRepr, UnitSystemRepr, QuantityRepr } from "../repr";
 
 describe("container", () => {
   describe("dimension", () => {
     it("should create a value representing a dimension", () => {
       type Energy = MkDimension<{ M: Int[1]; L: Int[2]; T: Int[-2] }>;
-      const energyRepr = { M: 1, L: 2, T: -2 };
+      const energyRepr: DimensionRepr = { M: 1, L: 2, T: -2 };
       const energyD = dimension<Energy>(energyRepr);
-      expect(energyD.repr).toEqual(energyRepr);
+      expect(energyD.repr).toEqual<DimensionRepr>(energyRepr);
     });
   });
 
   describe("unitSystem", () => {
     it("should create a value representing a unit system", () => {
       type FPS = MkUnitSystem<"FPS">;
-      const fpsRepr = {
+      const fpsRepr: UnitSystemRepr = {
         M: { name: "pound", coeff: 0.45359237 },
         L: { name: "foot", coeff: 0.3048 },
         T: { name: "second", coeff: 1 },
       };
       const fps = unitSystem<FPS>(fpsRepr);
-      expect(fps.repr).toEqual(fpsRepr);
+      expect(fps.repr).toEqual<UnitSystemRepr>(fpsRepr);
     });
   });
 
   describe("quantity", () => {
     it("should create a value representing a quantity", () => {
-      const repr = {
+      const repr: QuantityRepr = {
         value: 42,
         dimension: massD.repr,
         unitSystem: mks.repr,
       };
       const q = quantity<MkQuantity<Mass, MKS>>(repr);
-      expect(q.repr).toEqual(repr);
+      expect(q.repr).toEqual<QuantityRepr>(repr);
     });
   });
 
   describe("qty", () => {
     it("should create a value representing a quantity", () => {
       const q = qty<Mass, MKS>(42, massD, mks);
-      expect(q.repr).toEqual({
+      expect(q.repr).toEqual<QuantityRepr>({
         value: 42,
         dimension: massD.repr,
         unitSystem: mks.repr,
@@ -74,7 +77,7 @@ describe("container", () => {
   describe("num", () => {
     it("should create a dimensionless number", () => {
       const x = num(42, mks);
-      expect(x.repr).toEqual({
+      expect(x.repr).toEqual<QuantityRepr>({
         value: 42,
         dimension: oneD.repr,
         unitSystem: mks.repr,
@@ -85,7 +88,7 @@ describe("container", () => {
   describe("mass", () => {
     it("should create a mass", () => {
       const m = mass(42, mks);
-      expect(m.repr).toEqual({
+      expect(m.repr).toEqual<QuantityRepr>({
         value: 42,
         dimension: massD.repr,
         unitSystem: mks.repr,
@@ -96,7 +99,7 @@ describe("container", () => {
   describe("length", () => {
     it("should create a length", () => {
       const l = length(42, mks);
-      expect(l.repr).toEqual({
+      expect(l.repr).toEqual<QuantityRepr>({
         value: 42,
         dimension: lengthD.repr,
         unitSystem: mks.repr,
@@ -107,7 +110,7 @@ describe("container", () => {
   describe("time", () => {
     it("should create a time", () => {
       const t = time(42, mks);
-      expect(t.repr).toEqual({
+      expect(t.repr).toEqual<QuantityRepr>({
         value: 42,
         dimension: timeD.repr,
         unitSystem: mks.repr,
@@ -115,12 +118,34 @@ describe("container", () => {
     });
   });
 
+  describe("mulD", () => {
+    it("should multiply dimensions", () => {
+      type D1 = MkDimension<{ M: Int[1]; L: Int[1]; T: Int[0] }>;
+      type D2 = MkDimension<{ M: Int[0]; L: Int[1]; T: Int[-2] }>;
+      const d1 = dimension<D1>({ M: 1, L: 1, T: 0 });
+      const d2 = dimension<D2>({ M: 0, L: 1, T: -2 });
+      const d3 = mulD(d1, d2);
+      expect(d3.repr).toEqual<DimensionRepr>({ M: 1, L: 2, T: -2 });
+    });
+  });
+
+  describe("divD", () => {
+    it("should divide a dimension by another", () => {
+      type D1 = MkDimension<{ M: Int[1]; L: Int[1]; T: Int[0] }>;
+      type D2 = MkDimension<{ M: Int[0]; L: Int[1]; T: Int[-2] }>;
+      const d1 = dimension<D1>({ M: 1, L: 1, T: 0 });
+      const d2 = dimension<D2>({ M: 0, L: 1, T: -2 });
+      const d3 = divD(d1, d2);
+      expect(d3.repr).toEqual<DimensionRepr>({ M: 1, L: 0, T: 2 });
+    });
+  });
+
   describe("add", () => {
     it("should add two values with equal dimension and unit system", () => {
-      const m1 = mass(2, mks);
-      const m2 = mass(5, mks);
+      const m1 = mass(5, mks);
+      const m2 = mass(2, mks);
       const m3 = add(m1, m2);
-      expect(m3.repr).toEqual({
+      expect(m3.repr).toEqual<QuantityRepr>({
         value: 7,
         dimension: massD.repr,
         unitSystem: mks.repr,
@@ -133,7 +158,7 @@ describe("container", () => {
       const m1 = mass(5, mks);
       const m2 = mass(2, mks);
       const m3 = sub(m1, m2);
-      expect(m3.repr).toEqual({
+      expect(m3.repr).toEqual<QuantityRepr>({
         value: 3,
         dimension: massD.repr,
         unitSystem: mks.repr,
@@ -143,10 +168,10 @@ describe("container", () => {
 
   describe("mul", () => {
     it("should multiply values with equal unit system", () => {
-      const m = mass(2, mks);
-      const l = length(5, mks);
+      const m = mass(5, mks);
+      const l = length(2, mks);
       const x = mul(m, l);
-      expect(x.repr).toEqual({
+      expect(x.repr).toEqual<QuantityRepr>({
         value: 10,
         dimension: { M: 1, L: 1, T: 0 },
         unitSystem: mks.repr,
@@ -155,11 +180,11 @@ describe("container", () => {
   });
 
   describe("div", () => {
-    it("should divide a value with another with equal unit system", () => {
+    it("should divide a value by another with equal unit system", () => {
       const m = mass(5, mks);
       const l = length(2, mks);
       const x = div(m, l);
-      expect(x.repr).toEqual({
+      expect(x.repr).toEqual<QuantityRepr>({
         value: 2.5,
         dimension: { M: 1, L: -1, T: 0 },
         unitSystem: mks.repr,
@@ -171,7 +196,7 @@ describe("container", () => {
     it("should convert a value to one measured in another unit system", () => {
       const m1 = mass(42, mks);
       const m2 = conv(m1, cgs);
-      expect(m2.repr).toEqual({
+      expect(m2.repr).toEqual<QuantityRepr>({
         value: 42000,
         dimension: massD.repr,
         unitSystem: cgs.repr,
