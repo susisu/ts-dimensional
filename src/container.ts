@@ -25,18 +25,18 @@ import {
 // containers
 
 export type Dimension<D extends DimensionKind> = Readonly<{
-  repr: DimensionRepr;
   $type: (x: D) => D;
+  repr: DimensionRepr;
 }>;
 
 export type UnitSystem<S extends UnitSystemKind> = Readonly<{
-  repr: UnitSystemRepr;
   $type: (x: S) => S;
+  repr: UnitSystemRepr;
 }>;
 
 export type Quantity<Q extends QuantityKind> = Readonly<{
-  repr: QuantityRepr;
   $type: (x: Q) => Q;
+  repr: QuantityRepr;
 }>;
 
 const id = <T>(x: T): T => x;

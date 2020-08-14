@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 
-export type UnitSystemKind = string;
+export type UnitSystemKind = { name: string };
 
 type AsUnitSystem<S extends UnitSystemKind> = S;
 
-export type MkUnitSystem<S extends UnitSystemKind> = AsUnitSystem<S>;
+export type MkUnitSystem<S extends string> = AsUnitSystem<{ name: S }>;
