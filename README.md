@@ -11,6 +11,8 @@ npm i @susisu/ts-dimensional
 yarn add @susisu/ts-dimensional
 ```
 
+TypeScript 4.0+ is required.
+
 ## Example
 
 ``` typescript
