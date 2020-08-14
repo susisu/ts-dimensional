@@ -1,5 +1,7 @@
 /* eslint-disable prettier/prettier */
 
-export type KUnitSystem = string;
+export type UnitSystemKind = string;
 
-export type UnitSystem<S extends KUnitSystem> = S;
+type AsUnitSystem<S extends UnitSystemKind> = S;
+
+export type MkUnitSystem<S extends UnitSystemKind> = AsUnitSystem<S>;

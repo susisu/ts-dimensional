@@ -19,7 +19,7 @@ import {
 } from "../container";
 import { Int } from "../integer";
 import { MkDimension as MkDimensionT, Mass as MassT } from "../dimension";
-import { UnitSystem as UnitSystemT } from "../unitSystem";
+import { MkUnitSystem as UnitSystemT } from "../unitSystem";
 import { MkQuantity as MkQuantityT } from "../quantity";
 
 describe("container", () => {

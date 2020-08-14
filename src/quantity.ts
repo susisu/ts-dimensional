@@ -1,16 +1,16 @@
 import { DimensionKind } from "./dimension";
-import { KUnitSystem } from "./unitSystem";
+import { UnitSystemKind } from "./unitSystem";
 
 /* eslint-disable prettier/prettier */
 
 export type KQuantity = {
   dimension: DimensionKind,
-  unitSystem: KUnitSystem,
+  unitSystem: UnitSystemKind,
 };
 
 export type Quantity<Q extends KQuantity> = Q;
 
-export type MkQuantity<D extends DimensionKind, S extends KUnitSystem> = Quantity<{
+export type MkQuantity<D extends DimensionKind, S extends UnitSystemKind> = Quantity<{
   dimension: D,
   unitSystem: S,
 }>;
