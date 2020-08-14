@@ -1,5 +1,20 @@
-export { NaturalKind, Nat, Add as AddN, Sub as SubN } from "./natural";
-export { IntegerKind, MkInteger, Int, Add as AddZ, Sub as SubZ } from "./integer";
+export {
+  NaturalKind,
+  Nat,
+  Succ as SuccN,
+  Pred as PredN,
+  Add as AddN,
+  Sub as SubN,
+} from "./natural";
+export {
+  IntegerKind,
+  MkInteger,
+  Int,
+  Succ as SuccZ,
+  Pred as PredZ,
+  Add as AddZ,
+  Sub as SubZ,
+} from "./integer";
 export {
   Base,
   DimensionKind,

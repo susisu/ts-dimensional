@@ -17,5 +17,14 @@ export type Nat = {
   [9]: AsNatural<[never, never, never, never, never, never, never, never, never]>,
 }
 
-export type Add<N1 extends NaturalKind, N2 extends NaturalKind> = [...N1, ...N2];
-export type Sub<N1 extends NaturalKind, N2 extends NaturalKind> = N1 extends [...N2, ...infer N3] ? N3 : never;
+export type Succ<N extends NaturalKind> = AsNatural<[never, ...N]>;
+export type Pred<N extends NaturalKind> =
+  N extends [never, ...infer N0]
+    ? (N0 extends NaturalKind ? AsNatural<N0> : never)
+    : never;
+
+export type Add<N1 extends NaturalKind, N2 extends NaturalKind> = AsNatural<[...N1, ...N2]>;
+export type Sub<N1 extends NaturalKind, N2 extends NaturalKind> =
+  N1 extends [...N2, ...infer N3]
+    ? (N3 extends NaturalKind ? AsNatural<N3> : never)
+    : never;
