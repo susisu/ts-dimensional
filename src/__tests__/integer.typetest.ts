@@ -1,22 +1,22 @@
 import { Integer, MkInteger, Z, Add, Sub } from "../integer";
-import { N } from "../natural";
+import { Nat } from "../natural";
 import { Equal, Assert } from "./assert";
 
 /* eslint-disable prettier/prettier */
 
 // Integer
 
-export type Test_Integer_0 = Assert<Equal<Integer<{ sign: "+", abs: N[0] }>, { sign: "+", abs: N[0] }>>;
-export type Test_Integer_1 = Assert<Equal<Integer<{ sign: "-", abs: N[0] }>, { sign: "+", abs: N[0] }>>;
-export type Test_Integer_2 = Assert<Equal<Integer<{ sign: "+", abs: N[1] }>, { sign: "+", abs: N[1] }>>;
-export type Test_Integer_3 = Assert<Equal<Integer<{ sign: "-", abs: N[1] }>, { sign: "-", abs: N[1] }>>;
+export type Test_Integer_0 = Assert<Equal<Integer<{ sign: "+", abs: Nat[0] }>, { sign: "+", abs: Nat[0] }>>;
+export type Test_Integer_1 = Assert<Equal<Integer<{ sign: "-", abs: Nat[0] }>, { sign: "+", abs: Nat[0] }>>;
+export type Test_Integer_2 = Assert<Equal<Integer<{ sign: "+", abs: Nat[1] }>, { sign: "+", abs: Nat[1] }>>;
+export type Test_Integer_3 = Assert<Equal<Integer<{ sign: "-", abs: Nat[1] }>, { sign: "-", abs: Nat[1] }>>;
 
 // MkInteger
 
-export type Test_MkInteger_0 = Assert<Equal<MkInteger<"+", N[0]>, { sign: "+", abs: N[0] }>>;
-export type Test_MkInteger_1 = Assert<Equal<MkInteger<"-", N[0]>, { sign: "+", abs: N[0] }>>;
-export type Test_MkInteger_2 = Assert<Equal<MkInteger<"+", N[1]>, { sign: "+", abs: N[1] }>>;
-export type Test_MkInteger_3 = Assert<Equal<MkInteger<"-", N[1]>, { sign: "-", abs: N[1] }>>;
+export type Test_MkInteger_0 = Assert<Equal<MkInteger<"+", Nat[0]>, { sign: "+", abs: Nat[0] }>>;
+export type Test_MkInteger_1 = Assert<Equal<MkInteger<"-", Nat[0]>, { sign: "+", abs: Nat[0] }>>;
+export type Test_MkInteger_2 = Assert<Equal<MkInteger<"+", Nat[1]>, { sign: "+", abs: Nat[1] }>>;
+export type Test_MkInteger_3 = Assert<Equal<MkInteger<"-", Nat[1]>, { sign: "-", abs: Nat[1] }>>;
 
 // Add
 
