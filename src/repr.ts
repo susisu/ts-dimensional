@@ -30,15 +30,6 @@ export function divD(d1: DimensionRepr, d2: DimensionRepr): DimensionRepr {
   };
 }
 
-export function ratio(d: DimensionRepr, s1: UnitSystemRepr, s2: UnitSystemRepr): number {
-  let r: number = 1;
-  for (const base of bases) {
-    const e = d[base];
-    r *= (s1[base].coeff / s2[base].coeff) ** e;
-  }
-  return r;
-}
-
 export function add(q1: QuantityRepr, q2: QuantityRepr): QuantityRepr {
   // require(equal(q1.dimension, q2.dimension));
   // require(equal(q1.unitSystem, q2.unitSystem));
@@ -83,4 +74,13 @@ export function conv(q: QuantityRepr, s: UnitSystemRepr): QuantityRepr {
     dimension: q.dimension,
     unitSystem: s,
   };
+}
+
+function ratio(d: DimensionRepr, s1: UnitSystemRepr, s2: UnitSystemRepr): number {
+  let r: number = 1;
+  for (const base of bases) {
+    const e = d[base];
+    r *= (s1[base].coeff / s2[base].coeff) ** e;
+  }
+  return r;
 }

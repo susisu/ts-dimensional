@@ -13,6 +13,8 @@ import {
   DimensionRepr,
   UnitSystemRepr,
   QuantityRepr,
+  mulD as mulDRepr,
+  divD as divDRepr,
   add as addRepr,
   sub as subRepr,
   mul as mulRepr,
@@ -68,20 +70,6 @@ export const massD = dimension<MassD>({ M: 1, L: 0, T: 0 });
 export const lengthD = dimension<LengthD>({ M: 0, L: 1, T: 0 });
 export const timeD = dimension<TimeD>({ M: 0, L: 0, T: 1 });
 
-export type MKS = MkUnitSystem<"MKS">;
-export type CGS = MkUnitSystem<"CGS">;
-
-export const mks = unitSystem<MKS>({
-  M: { name: "kilogram", coeff: 1 },
-  L: { name: "meter", coeff: 1 },
-  T: { name: "second", coeff: 1 },
-});
-export const cgs = unitSystem<CGS>({
-  M: { name: "gram", coeff: 1e-3 },
-  L: { name: "centimeter", coeff: 1e-2 },
-  T: { name: "second", coeff: 1 },
-});
-
 export function num<S extends UnitSystemKind>(
   value: number,
   unitSystem: UnitSystem<S>
@@ -109,6 +97,34 @@ export function time<S extends UnitSystemKind>(
 ): Qty<TimeD, S> {
   return qty(value, timeD, unitSystem);
 }
+
+export function mulD<D1 extends DimensionKind, D2 extends DimensionKind>(
+  d1: Dimension<D1>,
+  d2: Dimension<D2>
+): Dimension<MulD<D1, D2>> {
+  return dimension(mulDRepr(d1.repr, d2.repr));
+}
+
+export function divD<D1 extends DimensionKind, D2 extends DimensionKind>(
+  d1: Dimension<D1>,
+  d2: Dimension<D2>
+): Dimension<DivD<D1, D2>> {
+  return dimension(divDRepr(d1.repr, d2.repr));
+}
+
+export type MKS = MkUnitSystem<"MKS">;
+export type CGS = MkUnitSystem<"CGS">;
+
+export const mks = unitSystem<MKS>({
+  M: { name: "kilogram", coeff: 1 },
+  L: { name: "meter", coeff: 1 },
+  T: { name: "second", coeff: 1 },
+});
+export const cgs = unitSystem<CGS>({
+  M: { name: "gram", coeff: 1e-3 },
+  L: { name: "centimeter", coeff: 1e-2 },
+  T: { name: "second", coeff: 1 },
+});
 
 export function add<D extends DimensionKind, S extends UnitSystemKind>(
   q1: Qty<D, S>,
