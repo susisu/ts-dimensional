@@ -18,14 +18,14 @@ import {
   conv,
 } from "../container";
 import { Int } from "../integer";
-import { MkDimension as MkDimensionT, Mass as MassT } from "../dimension";
-import { MkUnitSystem as UnitSystemT } from "../unitSystem";
-import { MkQuantity as MkQuantityT } from "../quantity";
+import { MkDimension, Mass } from "../dimension";
+import { MkUnitSystem } from "../unitSystem";
+import { MkQuantity } from "../quantity";
 
 describe("container", () => {
-  type EnergyT = MkDimensionT<{ M: Int[1]; L: Int[2]; T: Int[-2] }>;
-  type MksT = UnitSystemT<"MKS">;
-  type CgsT = UnitSystemT<"CGS">;
+  type Energy = MkDimension<{ M: Int[1]; L: Int[2]; T: Int[-2] }>;
+  type MKS = MkUnitSystem<"MKS">;
+  type CGS = MkUnitSystem<"CGS">;
 
   const energyRepr = { M: 1, L: 2, T: -2 };
   const mksRepr = {
@@ -39,19 +39,19 @@ describe("container", () => {
     T: { name: "second", coeff: 1 },
   };
 
-  const mks = unitSystem<MksT>(mksRepr);
-  const cgs = unitSystem<CgsT>(cgsRepr);
+  const mks = unitSystem<MKS>(mksRepr);
+  const cgs = unitSystem<CGS>(cgsRepr);
 
   describe("dimension", () => {
     it("should create a value representing a dimension", () => {
-      const energyD = dimension<EnergyT>(energyRepr);
+      const energyD = dimension<Energy>(energyRepr);
       expect(energyD.repr).toEqual(energyRepr);
     });
   });
 
   describe("unitSystem", () => {
     it("should create a value representing a unit system", () => {
-      type FpsT = UnitSystemT<"FPS">;
+      type FpsT = MkUnitSystem<"FPS">;
       const fpsRepr = {
         M: { name: "pound", coeff: 0.45359237 },
         L: { name: "foot", coeff: 0.3048 },
@@ -69,14 +69,14 @@ describe("container", () => {
         dimension: massD.repr,
         unitSystem: mks.repr,
       };
-      const q = quantity<MkQuantityT<MassT, MksT>>(repr);
+      const q = quantity<MkQuantity<Mass, MKS>>(repr);
       expect(q.repr).toEqual(repr);
     });
   });
 
   describe("qty", () => {
     it("should create a value representing a quantity", () => {
-      const q = qty<MassT, MksT>(42, massD, mks);
+      const q = qty<Mass, MKS>(42, massD, mks);
       expect(q.repr).toEqual({
         value: 42,
         dimension: massD.repr,

@@ -1,8 +1,8 @@
-import { MkUnitSystem as UnitSystemT } from "../unitSystem";
+import { MkUnitSystem } from "../unitSystem";
 import { unitSystem, mass, length, add, sub, mul, div } from "../container";
 
-type MksT = UnitSystemT<"MKS">;
-type CgsT = UnitSystemT<"CGS">;
+type MKS = MkUnitSystem<"MKS">;
+type CGS = MkUnitSystem<"CGS">;
 
 const mksRepr = {
   M: { name: "kilogram", coeff: 1 },
@@ -15,8 +15,8 @@ const cgsRepr = {
   T: { name: "second", coeff: 1 },
 };
 
-const mks = unitSystem<MksT>(mksRepr);
-const cgs = unitSystem<CgsT>(cgsRepr);
+const mks = unitSystem<MKS>(mksRepr);
+const cgs = unitSystem<CGS>(cgsRepr);
 
 const m1 = mass(42, mks);
 const m2 = mass(42, cgs);

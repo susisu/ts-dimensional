@@ -49,11 +49,6 @@ export function quantity<Q extends KQuantity>(repr: QuantityRepr): Quantity<Q> {
   return { repr, $type: id };
 }
 
-export const oneD = dimension<OneD>({ M: 0, L: 0, T: 0 });
-export const massD = dimension<MassD>({ M: 1, L: 0, T: 0 });
-export const lengthD = dimension<LengthD>({ M: 0, L: 1, T: 0 });
-export const timeD = dimension<TimeD>({ M: 0, L: 0, T: 1 });
-
 export type Qty<D extends DimensionKind, S extends UnitSystemKind> = Quantity<MkQuantity<D, S>>;
 
 export function qty<D extends DimensionKind, S extends UnitSystemKind>(
@@ -68,7 +63,15 @@ export function qty<D extends DimensionKind, S extends UnitSystemKind>(
   });
 }
 
-export function num<S extends UnitSystemKind>(value: number, unitSystem: UnitSystem<S>): Qty<OneD, S> {
+export const oneD = dimension<OneD>({ M: 0, L: 0, T: 0 });
+export const massD = dimension<MassD>({ M: 1, L: 0, T: 0 });
+export const lengthD = dimension<LengthD>({ M: 0, L: 1, T: 0 });
+export const timeD = dimension<TimeD>({ M: 0, L: 0, T: 1 });
+
+export function num<S extends UnitSystemKind>(
+  value: number,
+  unitSystem: UnitSystem<S>
+): Qty<OneD, S> {
   return qty(value, oneD, unitSystem);
 }
 
