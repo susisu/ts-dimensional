@@ -47,7 +47,7 @@ export type Int = {
   [7]: MkInteger<"+", Nat[7]>,
   [8]: MkInteger<"+", Nat[8]>,
   [9]: MkInteger<"+", Nat[9]>,
-}
+};
 
 export type Incr<Z extends IntegerKind> =
     Z["abs"] extends Nat[0] ? MkInteger<"+", Nat[1]>

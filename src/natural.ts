@@ -15,7 +15,7 @@ export type Nat = {
   [7]: AsNatural<[never, never, never, never, never, never, never]>,
   [8]: AsNatural<[never, never, never, never, never, never, never, never]>,
   [9]: AsNatural<[never, never, never, never, never, never, never, never, never]>,
-}
+};
 
 export type Incr<N extends NaturalKind> = AsNatural<[never, ...N]>;
 export type Decr<N extends NaturalKind> =
