@@ -3,7 +3,7 @@ import { Base, bases } from "./dimension";
 export type DimensionRepr = Readonly<{ [B in Base]: number }>;
 
 export type UnitRepr = Readonly<{
-  name: string;
+  symbol: string;
   coeff: number;
 }>;
 export type UnitSystemRepr = Readonly<{ [B in Base]: UnitRepr }>;

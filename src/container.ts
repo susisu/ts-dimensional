@@ -96,14 +96,14 @@ export type MKS = MkUnitSystem<"MKS">;
 export type CGS = MkUnitSystem<"CGS">;
 
 export const mks = unitSystem<MKS>({
-  M: { name: "kilogram", coeff: 1 },
-  L: { name: "meter", coeff: 1 },
-  T: { name: "second", coeff: 1 },
+  M: { symbol: "kg", coeff: 1 },
+  L: { symbol: "m", coeff: 1 },
+  T: { symbol: "s", coeff: 1 },
 });
 export const cgs = unitSystem<CGS>({
-  M: { name: "gram", coeff: 1e-3 },
-  L: { name: "centimeter", coeff: 1e-2 },
-  T: { name: "second", coeff: 1 },
+  M: { symbol: "g", coeff: 1e-3 },
+  L: { symbol: "cm", coeff: 1e-2 },
+  T: { symbol: "s", coeff: 1 },
 });
 
 // basic quantity constructors
