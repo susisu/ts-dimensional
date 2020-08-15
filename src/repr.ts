@@ -31,8 +31,8 @@ export function divD(d1: DimensionRepr, d2: DimensionRepr): DimensionRepr {
 }
 
 export function add(q1: QuantityRepr, q2: QuantityRepr): QuantityRepr {
-  // require(equal(q1.dimension, q2.dimension));
-  // require(equal(q1.unitSystem, q2.unitSystem));
+  // assert(equal(q1.dimension, q2.dimension));
+  // assert(equal(q1.unitSystem, q2.unitSystem));
   return {
     value: q1.value + q2.value,
     dimension: q1.dimension,
@@ -41,8 +41,8 @@ export function add(q1: QuantityRepr, q2: QuantityRepr): QuantityRepr {
 }
 
 export function sub(q1: QuantityRepr, q2: QuantityRepr): QuantityRepr {
-  // require(equal(q1.dimension, q2.dimension))
-  // require(equal(q1.unitSystem, q2.unitSystem));
+  // assert(equal(q1.dimension, q2.dimension))
+  // assert(equal(q1.unitSystem, q2.unitSystem));
   return {
     value: q1.value - q2.value,
     dimension: q1.dimension,
@@ -51,7 +51,7 @@ export function sub(q1: QuantityRepr, q2: QuantityRepr): QuantityRepr {
 }
 
 export function mul(q1: QuantityRepr, q2: QuantityRepr): QuantityRepr {
-  // require(equal(q1.unitSystem, q2.unitSystem));
+  // assert(equal(q1.unitSystem, q2.unitSystem));
   return {
     value: q1.value * q2.value,
     dimension: mulD(q1.dimension, q2.dimension),
@@ -60,7 +60,7 @@ export function mul(q1: QuantityRepr, q2: QuantityRepr): QuantityRepr {
 }
 
 export function div(q1: QuantityRepr, q2: QuantityRepr): QuantityRepr {
-  // require(equal(q1.unitSystem, q2.unitSystem));
+  // assert(equal(q1.unitSystem, q2.unitSystem));
   return {
     value: q1.value / q2.value,
     dimension: divD(q1.dimension, q2.dimension),
