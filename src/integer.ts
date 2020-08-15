@@ -52,15 +52,14 @@ export type Int = {
 export type Incr<Z extends IntegerKind> =
     Z["abs"] extends Nat[0] ? MkInteger<"+", Nat[1]>
   : Z["sign"] extends "+" ? MkInteger<"+", IncrN<Z["abs"]>>
-  : MkInteger<"-", DecrN<Z["abs"]>>
-
+  : MkInteger<"-", DecrN<Z["abs"]>>;
 export type Decr<Z extends IntegerKind> =
     Z["abs"] extends Nat[0] ? MkInteger<"-", Nat[1]>
   : Z["sign"] extends "+" ? MkInteger<"+", DecrN<Z["abs"]>>
-  : MkInteger<"-", IncrN<Z["abs"]>>
+  : MkInteger<"-", IncrN<Z["abs"]>>;
 
 type SubNZ<N1 extends NaturalKind, N2 extends NaturalKind> =
-  SubN<N1,  N2> extends never
+  SubN<N1, N2> extends never
     ? MkInteger<"-", SubN<N2, N1>>
     : MkInteger<"+", SubN<N1, N2>>;
 
