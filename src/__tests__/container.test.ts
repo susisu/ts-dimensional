@@ -42,9 +42,9 @@ describe("container", () => {
     it("should create a value representing a unit system", () => {
       type FPS = MkUnitSystem<"FPS">;
       const fpsRepr: UnitSystemRepr = {
-        M: { symbol: "lb", coeff: 0.45359237 },
-        L: { symbol: "ft", coeff: 0.3048 },
-        T: { symbol: "s", coeff: 1 },
+        M: { symbol: "lb", factor: 0.45359237 },
+        L: { symbol: "ft", factor: 0.3048 },
+        T: { symbol: "s", factor: 1 },
       };
       const fps = unitSystem<FPS>(fpsRepr);
       expect(fps.repr).toEqual<UnitSystemRepr>(fpsRepr);

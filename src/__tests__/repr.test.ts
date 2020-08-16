@@ -31,14 +31,14 @@ describe("repr", () => {
   const mass: DimensionRepr = { M: 1, L: 0, T: 0 };
   const length: DimensionRepr = { M: 0, L: 1, T: 0 };
   const mks: UnitSystemRepr = {
-    M: { symbol: "kg", coeff: 1 },
-    L: { symbol: "m", coeff: 1 },
-    T: { symbol: "s", coeff: 1 },
+    M: { symbol: "kg", factor: 1 },
+    L: { symbol: "m", factor: 1 },
+    T: { symbol: "s", factor: 1 },
   };
   const cgs: UnitSystemRepr = {
-    M: { symbol: "g", coeff: 1e-3 },
-    L: { symbol: "cm", coeff: 1e-2 },
-    T: { symbol: "s", coeff: 1 },
+    M: { symbol: "g", factor: 1e-3 },
+    L: { symbol: "cm", factor: 1e-2 },
+    T: { symbol: "s", factor: 1 },
   };
 
   describe("add", () => {

@@ -4,7 +4,7 @@ export type DimensionRepr = Readonly<{ [B in Base]: number }>;
 
 export type UnitRepr = Readonly<{
   symbol: string;
-  coeff: number;
+  factor: number;
 }>;
 export type UnitSystemRepr = Readonly<{ [B in Base]: UnitRepr }>;
 
@@ -70,17 +70,17 @@ export function div(q1: QuantityRepr, q2: QuantityRepr): QuantityRepr {
 
 export function conv(q: QuantityRepr, s: UnitSystemRepr): QuantityRepr {
   return {
-    value: q.value * ratio(q.dimension, q.unitSystem, s),
+    value: q.value * convFactor(q.dimension, q.unitSystem, s),
     dimension: q.dimension,
     unitSystem: s,
   };
 }
 
-function ratio(d: DimensionRepr, s1: UnitSystemRepr, s2: UnitSystemRepr): number {
+function convFactor(d: DimensionRepr, s1: UnitSystemRepr, s2: UnitSystemRepr): number {
   let r: number = 1;
   for (const base of bases) {
     const e = d[base];
-    r *= (s1[base].coeff / s2[base].coeff) ** e;
+    r *= (s1[base].factor / s2[base].factor) ** e;
   }
   return r;
 }
