@@ -15,11 +15,19 @@ export type QuantityRepr = Readonly<{
 }>;
 
 export function mulD(d1: DimensionRepr, d2: DimensionRepr): DimensionRepr {
-  return Object.fromEntries(bases.map(base => [base, d1[base] + d2[base]])) as DimensionRepr;
+  return {
+    M: d1.M + d2.M,
+    L: d1.L + d2.L,
+    T: d1.T + d2.T,
+  };
 }
 
 export function divD(d1: DimensionRepr, d2: DimensionRepr): DimensionRepr {
-  return Object.fromEntries(bases.map(base => [base, d1[base] - d2[base]])) as DimensionRepr;
+  return {
+    M: d1.M - d2.M,
+    L: d1.L - d2.L,
+    T: d1.T - d2.T,
+  };
 }
 
 export function add(q1: QuantityRepr, q2: QuantityRepr): QuantityRepr {
