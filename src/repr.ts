@@ -15,19 +15,11 @@ export type QuantityRepr = Readonly<{
 }>;
 
 export function mulD(d1: DimensionRepr, d2: DimensionRepr): DimensionRepr {
-  return {
-    M: d1.M + d2.M,
-    L: d1.L + d2.L,
-    T: d1.T + d2.T,
-  };
+  return Object.fromEntries(bases.map(base => [base, d1[base] + d2[base]])) as DimensionRepr;
 }
 
 export function divD(d1: DimensionRepr, d2: DimensionRepr): DimensionRepr {
-  return {
-    M: d1.M - d2.M,
-    L: d1.L - d2.L,
-    T: d1.T - d2.T,
-  };
+  return Object.fromEntries(bases.map(base => [base, d1[base] - d2[base]])) as DimensionRepr;
 }
 
 export function add(q1: QuantityRepr, q2: QuantityRepr): QuantityRepr {
@@ -77,10 +69,5 @@ export function conv(q: QuantityRepr, s: UnitSystemRepr): QuantityRepr {
 }
 
 function convFactor(d: DimensionRepr, s1: UnitSystemRepr, s2: UnitSystemRepr): number {
-  let r: number = 1;
-  for (const base of bases) {
-    const e = d[base];
-    r *= (s1[base].factor / s2[base].factor) ** e;
-  }
-  return r;
+  return bases.reduce((factor, base) => factor * (s1[base].factor / s2[base].factor) ** d[base], 1);
 }
