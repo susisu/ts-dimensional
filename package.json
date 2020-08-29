@@ -1,6 +1,6 @@
 {
   "name": "@susisu/ts-dimensional",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Dimensional Quantities in TypeScript",
   "repository": "https://github.com/susisu/ts-dimensional.git",
   "author": "Susisu <susisu2413@yahoo.co.jp>",
