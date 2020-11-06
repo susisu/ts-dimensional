@@ -1,5 +1,5 @@
 # @susisu/ts-dimensional
-[![Build Status](https://travis-ci.com/susisu/ts-dimensional.svg?branch=master)](https://travis-ci.com/susisu/ts-dimensional)
+[![CI](https://github.com/susisu/ts-dimensional/workflows/CI/badge.svg)](https://github.com/susisu/ts-dimensional/actions?query=workflow%3ACI)
 
 PoC: Dimensional Quantities in TypeScript
 
